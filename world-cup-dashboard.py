@@ -1,22 +1,6 @@
 """
 Análise da Copa do Mundo 2026
 ==============================
-Este script:
-  1. Importa o CSV de partidas da Copa do Mundo;
-  2. Faz a limpeza e o tratamento dos dados;
-  3. Constrói métricas de desempenho por seleção jogando em casa (mandante)
-     e como visitante;
-  4. Aplica clusterização (K-Means) para agrupar seleções com perfis
-     ofensivo/defensivo, casa x fora, semelhantes;
-  5. Gera um dashboard HTML interativo (Plotly) com a correlação entre o
-     desempenho como mandante e como visitante, além dos clusters.
-
-Uso:
-    python analise_copa_do_mundo.py caminho/para/world-cup-matches.csv
-
-Saída:
-    dashboard_copa_do_mundo.html  -> dashboard interativo
-    times_clusterizados.csv       -> tabela com métricas + cluster de cada time
 """
 
 import sys
@@ -308,9 +292,9 @@ def gerar_dashboard(df: pd.DataFrame, times: pd.DataFrame, caminho_saida: str):
 # MAIN
 # ---------------------------------------------------------------------------
 def main():
-    caminho_csv = sys.argv[1] if len(sys.argv) > 1 else "world-cup-matches.csv"
-    saida_dashboard = "dashboard_copa_do_mundo.html"
-    saida_tabela = "times_clusterizados.csv"
+    caminho_csv = "world-cup-matches.csv"
+    saida_dashboard = "world-cup-dashboard.html"
+    saida_tabela = "world-cup-cluster.csv"
 
     df = carregar_dados(caminho_csv)
     df_limpo = limpar_dados(df)
